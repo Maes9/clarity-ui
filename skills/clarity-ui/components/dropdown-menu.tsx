@@ -55,7 +55,7 @@ export const DropdownMenuItem = forwardRef<
   <button
     ref={ref}
     className={cn(
-      "flex w-full items-center gap-2 rounded-sm px-2 py-1.5 text-sm transition-colors duration-75 cursor-pointer",
+      "flex w-full items-center gap-2 rounded-sm px-2 py-2 text-sm transition-colors duration-75 cursor-pointer",
       "hover:bg-bg-hover focus-visible:bg-bg-hover focus-visible:outline-none",
       destructive ? "text-status-error" : "text-fg-primary",
       "disabled:opacity-50 disabled:cursor-not-allowed",
@@ -84,7 +84,7 @@ export function DropdownMenuLabel({
   return (
     <div
       className={cn(
-        "px-2 py-1.5 text-xs font-medium text-fg-muted",
+        "px-2 py-2 text-xs font-medium text-fg-muted",
         className
       )}
     >

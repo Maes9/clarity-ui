@@ -99,7 +99,7 @@ export function DataTable<T>({
         <thead>
           <tr className="border-b border-border">
             {selectable && (
-              <th className="w-10 px-3 py-2.5">
+              <th className="w-10 px-4 py-3">
                 <input
                   type="checkbox"
                   checked={allSelected}
@@ -113,7 +113,7 @@ export function DataTable<T>({
               <th
                 key={col.key}
                 className={cn(
-                  "px-3 py-2.5 text-left text-xs font-medium uppercase tracking-wide text-fg-muted md:px-4",
+                  "px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text-fg-muted md:px-5",
                   col.align === "right" && "text-right",
                   col.align === "center" && "text-center",
                   col.sortable && "cursor-pointer select-none"
@@ -166,7 +166,7 @@ export function DataTable<T>({
                   onClick={() => onRowClick?.(row)}
                 >
                   {selectable && (
-                    <td className="px-3 py-2.5" onClick={(e) => e.stopPropagation()}>
+                    <td className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
                       <input
                         type="checkbox"
                         checked={isSelected}
@@ -181,7 +181,7 @@ export function DataTable<T>({
                       <td
                         key={col.key}
                         className={cn(
-                          "px-3 py-2.5 text-sm md:px-4",
+                          "px-4 py-3 text-sm md:px-5",
                           col.align === "right" && "text-right",
                           col.align === "center" && "text-center"
                         )}
@@ -191,7 +191,7 @@ export function DataTable<T>({
                     );
                   })}
                   {rowActions && (
-                    <td className="px-2 py-2.5" onClick={(e) => e.stopPropagation()}>
+                    <td className="px-3 py-3" onClick={(e) => e.stopPropagation()}>
                       {rowActions(row)}
                     </td>
                   )}
@@ -203,7 +203,7 @@ export function DataTable<T>({
       </table>
 
       {pagination && (
-        <div className="flex flex-col items-center gap-2 border-t border-border px-4 py-2.5 sm:flex-row sm:justify-between">
+        <div className="flex flex-col items-center gap-2 border-t border-border px-4 py-3 sm:flex-row sm:justify-between">
           <p className="text-xs text-fg-muted">
             Showing{" "}
             {Math.min((pagination.page - 1) * pagination.pageSize + 1, pagination.total)}–

@@ -14,10 +14,10 @@ interface StatCardProps {
 
 export function StatCard({ label, value, change, icon: Icon }: StatCardProps) {
   return (
-    <div className="rounded-md border border-border bg-bg-primary p-4 sm:p-5">
+    <div className="rounded-md border border-border bg-bg-primary p-5">
       <div className="flex items-center justify-between">
         <p className="text-sm font-medium text-fg-secondary">{label}</p>
-        {Icon && <Icon className="h-4 w-4 text-fg-muted" />}
+        {Icon && <Icon className="h-5 w-5 text-fg-muted" />}
       </div>
       <p className="mt-2 text-xl font-semibold tracking-tight text-fg-primary font-mono sm:text-2xl">
         {value}

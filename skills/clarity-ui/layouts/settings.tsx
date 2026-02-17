@@ -85,10 +85,10 @@ export function SettingsLayout({
 
           {/* Save footer — sticky at bottom */}
           <div className="flex justify-end gap-2 border-t border-border pt-4">
-            <button className="inline-flex h-9 items-center justify-center rounded-sm border border-border bg-bg-primary px-4 text-sm font-medium text-fg-primary hover:bg-bg-hover transition-colors duration-75">
+            <button className="inline-flex h-10 items-center justify-center rounded-sm border border-border bg-bg-primary px-4 text-sm font-medium text-fg-primary hover:bg-bg-hover transition-colors duration-75">
               Cancel
             </button>
-            <button className="inline-flex h-9 items-center justify-center rounded-sm bg-accent px-4 text-sm font-medium text-fg-on-accent hover:bg-accent-hover transition-colors duration-75">
+            <button className="inline-flex h-10 items-center justify-center rounded-sm bg-accent px-4 text-sm font-medium text-fg-on-accent hover:bg-accent-hover transition-colors duration-75">
               Save changes
             </button>
           </div>
@@ -145,7 +145,7 @@ export function DangerZone({
         <div className="mt-4">
           <button
             onClick={onAction}
-            className="inline-flex h-9 items-center justify-center rounded-sm bg-status-error px-4 text-sm font-medium text-white hover:bg-status-error/90 transition-colors duration-75"
+            className="inline-flex h-10 items-center justify-center rounded-sm bg-status-error px-4 text-sm font-medium text-white hover:bg-status-error/90 transition-colors duration-75"
           >
             {actionLabel}
           </button>

@@ -15,9 +15,9 @@ const buttonVariants = cva(
         ghost: "text-fg-secondary hover:bg-bg-hover hover:text-fg-primary",
       },
       size: {
-        default: "h-10 px-4 py-2 sm:h-9",
-        sm: "h-9 px-3 text-sm sm:h-8",
-        icon: "h-10 w-10 sm:h-9 sm:w-9",
+        default: "h-10 px-4 py-2",
+        sm: "h-9 px-3 text-sm",
+        icon: "h-10 w-10",
       },
     },
     defaultVariants: {

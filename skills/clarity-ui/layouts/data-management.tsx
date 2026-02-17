@@ -60,14 +60,14 @@ export function DataManagementLayout({
             {title}
           </h1>
           {description && (
-            <p className="mt-1 text-sm text-fg-secondary">{description}</p>
+            <p className="mt-1 text-base text-fg-secondary">{description}</p>
           )}
         </div>
         <div className="flex items-center gap-2">
           {onExport && (
             <button
               onClick={onExport}
-              className="inline-flex h-9 items-center justify-center gap-2 rounded-sm border border-border bg-bg-primary px-4 text-sm font-medium text-fg-primary hover:bg-bg-hover transition-colors duration-75"
+              className="inline-flex h-10 items-center justify-center gap-2 rounded-sm border border-border bg-bg-primary px-4 text-sm font-medium text-fg-primary hover:bg-bg-hover transition-colors duration-75"
             >
               <Download className="h-4 w-4" />
               Export
@@ -76,7 +76,7 @@ export function DataManagementLayout({
           {onCreate && (
             <button
               onClick={onCreate}
-              className="inline-flex h-9 items-center justify-center gap-2 rounded-sm bg-accent px-4 text-sm font-medium text-fg-on-accent hover:bg-accent-hover transition-colors duration-75"
+              className="inline-flex h-10 items-center justify-center gap-2 rounded-sm bg-accent px-4 text-sm font-medium text-fg-on-accent hover:bg-accent-hover transition-colors duration-75"
             >
               <Plus className="h-4 w-4" />
               {createLabel}
@@ -95,7 +95,7 @@ export function DataManagementLayout({
               placeholder="Search..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="flex h-8 w-full rounded-sm border border-border bg-bg-primary pl-3 pr-3 py-1 text-sm text-fg-primary placeholder:text-fg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="flex h-9 w-full rounded-sm border border-border bg-bg-primary pl-3 pr-3 py-1 text-sm text-fg-primary placeholder:text-fg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             />
           </div>
 
@@ -110,7 +110,7 @@ export function DataManagementLayout({
                   [filter.key]: e.target.value,
                 }))
               }
-              className="h-8 rounded-sm border border-border bg-bg-primary px-2 text-sm text-fg-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="h-9 rounded-sm border border-border bg-bg-primary px-2 text-sm text-fg-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <option value="">{filter.label}</option>
               {filter.options.map((opt) => (
@@ -142,7 +142,7 @@ export function DataManagementLayout({
               {onBulkExport && (
                 <button
                   onClick={onBulkExport}
-                  className="inline-flex h-8 items-center gap-2 rounded-sm border border-border bg-bg-primary px-3 text-sm font-medium text-fg-primary hover:bg-bg-hover transition-colors duration-75"
+                  className="inline-flex h-9 items-center gap-2 rounded-sm border border-border bg-bg-primary px-3 text-sm font-medium text-fg-primary hover:bg-bg-hover transition-colors duration-75"
                 >
                   <Download className="h-4 w-4" />
                   Export
@@ -151,7 +151,7 @@ export function DataManagementLayout({
               {onBulkDelete && (
                 <button
                   onClick={onBulkDelete}
-                  className="inline-flex h-8 items-center gap-2 rounded-sm border border-border bg-bg-primary px-3 text-sm font-medium text-status-error hover:bg-bg-hover transition-colors duration-75"
+                  className="inline-flex h-9 items-center gap-2 rounded-sm border border-border bg-bg-primary px-3 text-sm font-medium text-status-error hover:bg-bg-hover transition-colors duration-75"
                 >
                   <Trash2 className="h-4 w-4" />
                   Delete

@@ -157,22 +157,36 @@ Font: **Inter** (sans), **Geist Mono** (mono). Three weights: 400 (regular), 500
 
 | Role | Size | Class | Weight |
 |------|------|-------|--------|
-| Page title | 1.5rem (24px) | `text-3xl` | `font-semibold tracking-tight` |
-| Section title | 1rem (16px) | `text-lg` | `font-semibold` |
-| Card title | 0.875rem (14px) | `text-base` | `font-medium` |
-| Body text | 0.875rem (14px) | `text-base` | `font-normal` |
-| Labels / nav | 0.8125rem (13px) | `text-sm` | `font-medium` |
-| Captions / badges | 0.75rem (12px) | `text-xs` | `font-normal` or `font-medium` |
-| KPI values | 1.25rem (20px) | `text-2xl` | `font-semibold font-mono` |
-| Table headers | 0.75rem (12px) | `text-xs uppercase tracking-wide` | `font-medium` |
-| Table cells | 0.8125rem (13px) | `text-sm` | `font-normal` |
+| Page title | 1.875rem (30px) | `text-3xl` | `font-semibold tracking-tight` |
+| Section title | 1.125rem (18px) | `text-lg` | `font-semibold` |
+| Card title | 1rem (16px) | `text-base` | `font-medium` |
+| Body text | 1rem (16px) | `text-base` | `font-normal` |
+| Labels / nav | 0.875rem (14px) | `text-sm` | `font-medium` |
+| Captions / badges | 0.8125rem (13px) | `text-xs` | `font-normal` or `font-medium` |
+| KPI values | 1.5rem (24px) | `text-2xl` | `font-semibold font-mono` |
+| Table headers | 0.8125rem (13px) | `text-xs uppercase tracking-wide` | `font-medium` |
+| Table cells | 0.875rem (14px) | `text-sm` | `font-normal` |
 
-The type scale is denser than Tailwind's defaults. Override via `@theme`:
+Override Tailwind's defaults via `@theme`:
 ```
---text-xs: 0.75rem       --text-sm: 0.8125rem     --text-base: 0.875rem
---text-lg: 1rem          --text-xl: 1.125rem      --text-2xl: 1.25rem
---text-3xl: 1.5rem
+--text-xs: 0.8125rem     --text-sm: 0.875rem      --text-base: 1rem
+--text-lg: 1.125rem      --text-xl: 1.25rem       --text-2xl: 1.5rem
+--text-3xl: 1.875rem
 ```
+
+### Customizing the type scale
+
+The type scale and component dimensions form a coherent system. If you change the type scale, adjust these dimensions proportionally:
+
+| If you change... | Also adjust... |
+|-----------------|----------------|
+| `--text-base` (body) | Button heights, input heights, card padding |
+| `--text-sm` (labels/nav) | Nav item padding, table cell padding, dropdown item padding |
+| `--text-xs` (captions) | Badge padding, table header padding |
+
+**Scaling guideline:** Interactive element height ≈ 2.5× the line-height of its text. When bumping the type scale by one step (e.g., base 14px → 16px), bump element heights by one Tailwind step (h-9 → h-10) and padding by 0.5 (py-2.5 → py-3).
+
+Font sizes change in `globals.css @theme` — no component code needed. Component heights/padding require updating the .tsx files.
 
 ---
 
@@ -182,8 +196,8 @@ Every page (except auth) lives inside the app shell:
 
 ```
 ┌─────────────┬────────────────────────────────┐
-│  Sidebar    │  Top bar (h-14, sticky)        │
-│  (w-60)     ├────────────────────────────────┤
+│  Sidebar    │  Top bar (h-16, sticky)        │
+│  (w-64)     ├────────────────────────────────┤
 │             │  PageHeader                     │
 │  - Logo     │  ┌────────────────────────────┐│
 │  - Nav      │  │  Page content (px-6 pb-6)  ││
@@ -192,9 +206,9 @@ Every page (except auth) lives inside the app shell:
 └─────────────┴────────────────────────────────┘
 ```
 
-**Sidebar:** w-60 (240px), `bg-bg-secondary`, `border-r border-border`. Collapsible to w-16 (64px, icons only). Contains: logo area (h-14), nav groups with icons, footer links, user avatar with name/email.
+**Sidebar:** w-64 (256px), `bg-bg-secondary`, `border-r border-border`. Collapsible to w-16 (64px, icons only). Contains: logo area (h-16), nav groups with `h-5 w-5` icons, footer links, user avatar with name/email. Nav items: `py-2 px-2`.
 
-**Top bar:** h-14 (56px), `sticky top-0`, `bg-bg-primary`, `border-b border-border`. Contains: breadcrumbs (left), search trigger with ⌘K badge, notification bell, user avatar (right). Include a mobile hamburger button (`md:hidden`).
+**Top bar:** h-16 (64px), `sticky top-0`, `bg-bg-primary`, `border-b border-border`. Contains: breadcrumbs (left), search trigger with ⌘K badge, notification bell, user avatar (right). Include a mobile hamburger button (`md:hidden`). Icons: `h-5 w-5`.
 
 **Page header:** Title (`text-3xl font-semibold tracking-tight`) on the left, action buttons on the right. Always present on every page.
 
@@ -213,7 +227,7 @@ Structure: stat cards (4-col grid) → charts (2:1 ratio: area chart + bar/donut
 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4     ← stat cards
 grid grid-cols-1 lg:grid-cols-3 gap-4                     ← charts (first: lg:col-span-2)
 ```
-Stat card: `rounded-md border border-border bg-bg-primary p-5`. Label (`text-sm text-fg-secondary`), value (`text-2xl font-semibold font-mono`), trend indicator with colored arrow.
+Stat card: `rounded-md border border-border bg-bg-primary p-5`. Label (`text-sm text-fg-secondary`), value (`text-2xl font-semibold font-mono`), icon (`h-5 w-5 text-fg-muted`), trend indicator with colored arrow.
 
 ### Data management / Entity list
 Structure: filter bar → data table → pagination.
@@ -234,10 +248,10 @@ No app shell. Centered card on `bg-bg-secondary`, max-w-md, rounded-lg, with log
 ## Component specifications
 
 ### Button
-Four variants: **default** (accent bg), **destructive** (red bg), **outline** (border, transparent bg), **ghost** (no border, no bg). Three sizes: **default** (h-10 mobile, h-9 desktop), **sm** (h-9/h-8), **icon** (h-10 w-10 / h-9 w-9). Always `rounded-md`, `text-sm font-medium`, `transition-colors duration-75`, focus ring.
+Four variants: **default** (accent bg), **destructive** (red bg), **outline** (border, transparent bg), **ghost** (no border, no bg). Three sizes: **default** (`h-10 px-4`), **sm** (`h-9 px-3`), **icon** (`h-10 w-10`). Always `rounded-md`, `text-sm font-medium`, `transition-colors duration-75`, focus ring.
 
 ### Input
-`h-10` mobile, `h-9` desktop. `rounded-md border border-border bg-bg-primary`. Focus: `ring-2 ring-ring`. Error state: `border-status-error ring-status-error`. Include an `InputError` message component: `text-sm text-status-error mt-1.5`.
+`h-10`. `rounded-md border border-border bg-bg-primary`. Focus: `ring-2 ring-ring`. Error state: `border-status-error ring-status-error`. Include an `InputError` message component: `text-sm text-status-error mt-1.5`.
 
 ### Select
 Use `@radix-ui/react-select`. Match input height and border style. Trigger shows placeholder or selected value. Content panel: `rounded-md border border-border bg-bg-elevated shadow-md`.
@@ -246,10 +260,10 @@ Use `@radix-ui/react-select`. Match input height and border style. Trigger shows
 Generic `<T>` — no `Record<string, unknown>` constraint. Columns define `key`, `label`, `sortable`, `align`, optional `accessorFn` and `render`. Supports: row selection (checkboxes), sorting (arrow icons), pagination (first/prev/next/last), row actions, empty state. Horizontal scroll on mobile (`overflow-x-auto`). Pagination footer stacks vertically on mobile.
 
 ### Stat card
-`rounded-md border border-border bg-bg-primary p-5`. Label, value (`font-mono font-semibold`), optional trend indicator (TrendingUp/Down icon + colored change text).
+`rounded-md border border-border bg-bg-primary p-5`. Label (`text-sm text-fg-secondary`), value (`text-2xl font-semibold font-mono`), icon (`h-5 w-5 text-fg-muted`), optional trend indicator (TrendingUp/Down icon + colored change text).
 
 ### Status badge
-Pill with colored dot. Variants: `success` (green), `warning` (yellow), `error` (red), `info` (blue), `neutral` (gray). `text-xs font-medium px-2.5 py-0.5 rounded-full`. Background uses the `-bg` variant of each status color.
+Pill with colored dot. Variants: `success` (green), `warning` (yellow), `error` (red), `info` (blue), `neutral` (gray). `text-xs font-medium px-2.5 py-1 rounded-full`. Background uses the `-bg` variant of each status color.
 
 ### Filter bar
 Search input (with Search icon) + select dropdowns + active filter chips (accent pill with X button) + result count. Wraps on mobile — search goes full-width, dropdowns hidden below `sm:`.
@@ -279,7 +293,7 @@ Centered: icon (muted), title, description, CTA button. `py-16 text-center`.
 Use `@radix-ui/react-tabs` or a simple controlled component. Tab list: `border-b border-border`. Active tab: `border-b-2 border-accent text-fg-primary font-medium`. Inactive tab: `text-fg-muted hover:text-fg-secondary transition-colors duration-75`. Tab padding: `px-4 py-2`. Content area: `pt-4`. On mobile: horizontally scrollable if many tabs (`overflow-x-auto`).
 
 ### Dropdown menu / Popover
-Use `@radix-ui/react-popover`. Container: `rounded-md border border-border bg-bg-elevated shadow-md p-1 min-w-[8rem]`. Items: `py-1.5 px-2 text-sm rounded-sm hover:bg-bg-hover cursor-pointer transition-colors duration-75`. Separator: `my-1 border-t border-border`. Group label: `px-2 py-1.5 text-xs font-medium text-fg-muted`. Animate in: `duration-150 fade-in slide-in-from-top-1`.
+Use `@radix-ui/react-popover`. Container: `rounded-md border border-border bg-bg-elevated shadow-md p-1 min-w-[8rem]`. Items: `py-2 px-2 text-sm rounded-sm hover:bg-bg-hover cursor-pointer transition-colors duration-75`. Separator: `my-1 border-t border-border`. Group label: `px-2 py-2 text-xs font-medium text-fg-muted`. Animate in: `duration-150 fade-in slide-in-from-top-1`.
 
 ### Progress bar
 Track: `h-2 w-full rounded-full bg-bg-tertiary`. Fill: `h-full rounded-full bg-accent transition-all duration-200`. Warning state (>80% full): fill uses `bg-status-warning`. Critical state (>95% full): fill uses `bg-status-error`. Label above: value on left (`text-sm font-medium`), percentage on right (`text-sm text-fg-muted`).
@@ -325,8 +339,7 @@ When building custom UI not covered by a named component, use these token-based 
 ### Icon sizes
 | Context | Size | Color |
 |---------|------|-------|
-| Buttons, nav items, table cells | `h-4 w-4` | `text-fg-muted` (or inherits) |
-| Topbar, page headers | `h-5 w-5` | `text-fg-muted` |
+| Buttons, nav items, topbar, table cells | `h-5 w-5` | `text-fg-muted` (or inherits) |
 | Empty states, hero sections | `h-8 w-8` or `h-10 w-10` | `text-fg-muted` |
 
 Always use `lucide-react` icons. Never mix icon libraries.
@@ -365,7 +378,7 @@ Three breakpoints. Mobile-first CSS.
 |---|---|---|---|---|
 | Mobile | < 768px | (default) | Hidden, drawer overlay | `px-4` |
 | Tablet | 768–1279px | `md:` | Collapsed (w-16, icons only) | `px-6` |
-| Desktop | >= 1280px | `lg:` | Full (w-60) | `px-6` |
+| Desktop | >= 1280px | `lg:` | Full (w-64) | `px-6` |
 
 **Grid adaptations:**
 - KPI cards: 1 col → 2 cols (`sm:`) → 4 cols (`lg:`)
@@ -375,7 +388,7 @@ Three breakpoints. Mobile-first CSS.
 - Modals: bottom sheet on mobile, centered on desktop
 - Filter bar: search-only on mobile, full bar on `sm:+`
 
-**Touch targets:** minimum 44x44px on mobile. Buttons are h-10 on mobile, h-9 on desktop.
+**Touch targets:** minimum 44x44px on mobile. Buttons are h-10 across all breakpoints.
 
 ---
 
@@ -385,7 +398,7 @@ Automatic based on content type. Never ask the user.
 
 | Mode | Padding | Font | Use for |
 |------|---------|------|---------|
-| Compact | `py-2 px-3` | `text-sm` | Tables, list views, dropdowns |
+| Compact | `py-3 px-4` | `text-sm` | Tables, list views, dropdowns |
 | Default | `py-3 px-4` | `text-base` | Cards, forms, modals, general content |
 | Spacious | `py-4 px-6` | `text-base` | Settings, onboarding, auth, empty states |
 
@@ -460,7 +473,7 @@ Place it in the project at `src/components/ui/{name}.tsx`. Follow these conventi
 4. **Styling:** Only design token classes (`bg-bg-primary`, `text-fg-secondary`, `border-border`, etc.). Never hardcode hex colors or arbitrary spacing values.
 5. **Variants:** Use `class-variance-authority` (cva) for multiple visual variants.
 6. **Dark mode:** All colors from CSS variables. No `dark:` overrides needed.
-7. **Responsive:** Mobile-friendly defaults. Use `sm:` for desktop (`text-base sm:text-sm`, `h-10 sm:h-9`).
+7. **Responsive:** Mobile-friendly defaults. Use `sm:` for desktop adjustments where needed.
 8. **Transitions:** Every hover state includes `transition-colors duration-75`.
 
 #### Step 2: Update the project catalog
@@ -565,13 +578,13 @@ Components import from `@/components/ui/button`, `@/components/ui/select`, and `
   --radius-lg: 8px;
   --radius-xl: 12px;
 
-  --text-xs: 0.75rem;      --text-xs--line-height: 1rem;
-  --text-sm: 0.8125rem;    --text-sm--line-height: 1.125rem;
-  --text-base: 0.875rem;   --text-base--line-height: 1.25rem;
-  --text-lg: 1rem;         --text-lg--line-height: 1.5rem;
-  --text-xl: 1.125rem;     --text-xl--line-height: 1.75rem;
-  --text-2xl: 1.25rem;     --text-2xl--line-height: 1.75rem;
-  --text-3xl: 1.5rem;      --text-3xl--line-height: 2rem;
+  --text-xs: 0.8125rem;    --text-xs--line-height: 1.125rem;
+  --text-sm: 0.875rem;     --text-sm--line-height: 1.25rem;
+  --text-base: 1rem;       --text-base--line-height: 1.5rem;
+  --text-lg: 1.125rem;     --text-lg--line-height: 1.75rem;
+  --text-xl: 1.25rem;      --text-xl--line-height: 1.75rem;
+  --text-2xl: 1.5rem;      --text-2xl--line-height: 2rem;
+  --text-3xl: 1.875rem;    --text-3xl--line-height: 2.25rem;
 }
 
 /* Paste palette values here — swap this block to change brand */
@@ -654,5 +667,5 @@ Before delivering any UI, verify:
 - [ ] Tables: compact density. Forms: default. Settings: spacious.
 - [ ] Every page has a PageHeader with title and action buttons
 - [ ] Sidebar collapses on tablet, becomes drawer on mobile
-- [ ] Icons: h-4 w-4 in buttons/nav, h-5 w-5 in headers, h-8+ in empty states
+- [ ] Icons: h-5 w-5 in buttons/nav/headers, h-8+ in empty states
 - [ ] Z-index: dropdowns z-20, modals z-40/z-50, toasts z-[100]

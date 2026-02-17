@@ -88,9 +88,9 @@ export function CommandPalette({ groups }: CommandPaletteProps) {
                     setOpen(false);
                     setSearch("");
                   }}
-                  className="flex w-full items-center gap-3 rounded-md px-2 py-2.5 text-sm text-fg-primary hover:bg-bg-hover sm:gap-2 sm:py-1.5"
+                  className="flex w-full items-center gap-2 rounded-md px-2 py-2 text-sm text-fg-primary hover:bg-bg-hover"
                 >
-                  <item.icon className="h-4 w-4 text-fg-muted" />
+                  <item.icon className="h-5 w-5 text-fg-muted" />
                   <span className="flex-1 text-left">{item.label}</span>
                   {item.shortcut && (
                     <kbd className="text-xs text-fg-muted">{item.shortcut}</kbd>

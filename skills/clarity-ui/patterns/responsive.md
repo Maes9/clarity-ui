@@ -8,14 +8,14 @@ Three breakpoints. Every layout and component must work at all three.
 |------|-------|-----------------|---------------|
 | Mobile | < 768px | (default) | Hidden, drawer |
 | Tablet | 768–1279px | `md:` | Collapsed (64px) |
-| Desktop | ≥ 1280px | `lg:` | Full (240px) |
+| Desktop | ≥ 1280px | `lg:` | Full (256px) |
 
 ## Layout behavior per breakpoint
 
 ### App shell
 
 ```
-Desktop:  [Sidebar 240px] [Content]
+Desktop:  [Sidebar 256px] [Content]
 Tablet:   [Sidebar 64px]  [Content]
 Mobile:   [Content full width] + [Drawer overlay]
 ```

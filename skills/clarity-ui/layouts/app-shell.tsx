@@ -38,7 +38,7 @@ export function AppShell({ children }: AppShellProps) {
       {mobileOpen && (
         <div className="fixed inset-0 z-40 md:hidden">
           <div className="fixed inset-0 bg-black/50" onClick={() => setMobileOpen(false)} />
-          <div className="fixed inset-y-0 left-0 z-50 w-60">
+          <div className="fixed inset-y-0 left-0 z-50 w-64">
             <Sidebar />
             <button
               onClick={() => setMobileOpen(false)}

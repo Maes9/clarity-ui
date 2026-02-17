@@ -44,11 +44,11 @@ export function Sidebar({
     <aside
       className={cn(
         "flex h-screen flex-col border-r border-border bg-bg-secondary transition-[width] duration-200 ease-out",
-        collapsed ? "w-16" : "w-60"
+        collapsed ? "w-16" : "w-64"
       )}
     >
       {/* Logo */}
-      <div className={cn("flex h-14 items-center gap-2", collapsed ? "justify-center px-2" : "px-4")}>
+      <div className={cn("flex h-16 items-center gap-2", collapsed ? "justify-center px-2" : "px-4")}>
         {appIcon && <div className="flex-shrink-0">{appIcon}</div>}
         {!collapsed && <span className="text-sm font-semibold text-fg-primary">{appName}</span>}
       </div>
@@ -72,13 +72,13 @@ export function Sidebar({
                       title={collapsed ? item.label : undefined}
                       className={cn(
                         "flex items-center rounded-md text-sm font-medium transition-colors duration-75",
-                        collapsed ? "justify-center p-2" : "gap-2 px-2 py-1.5",
+                        collapsed ? "justify-center p-2" : "gap-2 px-2 py-2",
                         isActive
                           ? "bg-accent-subtle text-accent"
                           : "text-fg-secondary hover:bg-bg-hover hover:text-fg-primary"
                       )}
                     >
-                      <item.icon className="h-4 w-4 flex-shrink-0" />
+                      <item.icon className="h-5 w-5 flex-shrink-0" />
                       {!collapsed && <span className="flex-1 truncate">{item.label}</span>}
                       {!collapsed && item.badge && (
                         <span className="flex-shrink-0 rounded-full bg-accent px-1.5 py-0.5 text-xs font-medium text-fg-on-accent">
@@ -105,13 +105,13 @@ export function Sidebar({
               title={collapsed ? item.label : undefined}
               className={cn(
                 "flex items-center rounded-md text-sm font-medium transition-colors duration-75",
-                collapsed ? "justify-center p-2" : "gap-2 px-2 py-1.5",
+                collapsed ? "justify-center p-2" : "gap-2 px-2 py-2",
                 isActive
                   ? "bg-accent-subtle text-accent"
                   : "text-fg-secondary hover:bg-bg-hover hover:text-fg-primary"
               )}
             >
-              <item.icon className="h-4 w-4 flex-shrink-0" />
+              <item.icon className="h-5 w-5 flex-shrink-0" />
               {!collapsed && <span>{item.label}</span>}
             </Link>
           );

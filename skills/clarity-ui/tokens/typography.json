@@ -14,36 +14,36 @@
   },
   "text": {
     "xs": {
-      "size": { "$value": "0.75rem", "$type": "dimension" },
-      "lineHeight": { "$value": "1rem", "$type": "dimension" }
-    },
-    "sm": {
       "size": { "$value": "0.8125rem", "$type": "dimension" },
       "lineHeight": { "$value": "1.125rem", "$type": "dimension" }
     },
-    "base": {
+    "sm": {
       "size": { "$value": "0.875rem", "$type": "dimension" },
       "lineHeight": { "$value": "1.25rem", "$type": "dimension" }
     },
-    "lg": {
+    "base": {
       "size": { "$value": "1rem", "$type": "dimension" },
       "lineHeight": { "$value": "1.5rem", "$type": "dimension" }
     },
-    "xl": {
+    "lg": {
       "size": { "$value": "1.125rem", "$type": "dimension" },
       "lineHeight": { "$value": "1.75rem", "$type": "dimension" }
     },
-    "2xl": {
+    "xl": {
       "size": { "$value": "1.25rem", "$type": "dimension" },
       "lineHeight": { "$value": "1.75rem", "$type": "dimension" }
     },
-    "3xl": {
+    "2xl": {
       "size": { "$value": "1.5rem", "$type": "dimension" },
       "lineHeight": { "$value": "2rem", "$type": "dimension" }
     },
-    "4xl": {
+    "3xl": {
       "size": { "$value": "1.875rem", "$type": "dimension" },
       "lineHeight": { "$value": "2.25rem", "$type": "dimension" }
+    },
+    "4xl": {
+      "size": { "$value": "2.25rem", "$type": "dimension" },
+      "lineHeight": { "$value": "2.5rem", "$type": "dimension" }
     }
   },
   "letterSpacing": {
